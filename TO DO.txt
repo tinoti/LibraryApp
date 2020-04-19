@@ -1,0 +1,10 @@
+Add Knjige model 
+
+Add Clan model
+
+Populate with test data
+
+Add rezervacije controller and views. Rezervacije view has a form which takes one id paramter of Knjige and id of Clan. If everything is correct, it writes it in database in reservation table. 
+
+Add another view that displays list of those reservations.
+
