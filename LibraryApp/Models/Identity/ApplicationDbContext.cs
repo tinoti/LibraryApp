@@ -15,6 +15,8 @@ namespace LibraryApp.Models.Identity
 
         public DbSet<Member> Members { get; set; }
 
+        public DbSet<Reservation> Reservations { get; set; }
+
 
 
         public ApplicationDbContext()
