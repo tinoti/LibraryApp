@@ -1,6 +1,18 @@
 ﻿$(document).ready(function () {
 
     var list = [];
+    if (list.length === 0) {
+        if (window.location.search.split('?').length > 1) {
+            var params = window.location.search.split('?')[1].split('&');
+            for (var i = 0; i < params.length; i++) {
+                var value = decodeURIComponent(params[i].split('=')[1]);
+                list.push(value);
+            }
+        }
+    }
+   
+
+
     var MAXINPUT = 4;
 
     var book = new Bloodhound({
@@ -12,9 +24,8 @@
         }
     });
 
-    createEmptyInput();
-    removeInput();
-    typeaheadInit();
+    drawInputs();
+
 
 
     //Submit form event, calls the POST api and clears the form data:
@@ -24,7 +35,7 @@
 
         var MemberId = $('#MemberId').val();
 
-        var data = { 'BookIds': list, 'MemberId': MemberId };
+        var data = { 'BookNames': list, 'MemberId': MemberId };
 
 
         $.ajax({
@@ -74,7 +85,7 @@
             }
 
 
-            redrawInputs();
+            drawInputs();
 
         });
 
@@ -82,19 +93,18 @@
 
 
     //handles the input removal when user clicks on X
-    function removeInput() {
-        $('.removeInput').on('click', function (e) {
-            e.preventDefault();
+    $('#reservationForm').on('click',".removeInput", function (e) {
+        e.preventDefault();
 
-            //get index of span element in which is all this and remove that index from list
-            var index = $(this).parent().index();
-            list.splice(index, 1);
+        //get index of span element in which is all this and remove that index from list
+        var index = $(this).parent().index();
+        list.splice(index, 1);
 
-            //then redraw inputs again
-            redrawInputs();
+        //then redraw inputs again
+        drawInputs();
 
-        });
-    }
+    });
+    
 
 
     //Appends an empty input to the div
@@ -121,8 +131,8 @@
     }
 
 
-    //handles the redrawing of inputs, this gets called every time there's a new input or editing of a existing one
-    function redrawInputs() {
+    //handles the drawing of inputs, this gets called every time there's a new input or editing of a existing one
+    function drawInputs() {
 
 
         //First, remove all inputs
@@ -147,8 +157,6 @@
         //bond typeahead to inputs
         typeaheadInit();
 
-        //bond removeInput to inputs
-        removeInput();
 
 
     }

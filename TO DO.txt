@@ -1,10 +1,11 @@
-Add Knjige model 
+dodati errore kada se krivo upiše, server i client side
 
-Add Clan model
+typeahead sortiranje suggestiona
 
-Populate with test data
+dodati anti forgery
 
-Add rezervacije controller and views. Rezervacije view has a form which takes one id paramter of Knjige and id of Clan. If everything is correct, it writes it in database in reservation table. 
+data table jezik na hrv
 
-Add another view that displays list of those reservations.
+možda napraviti reservation dio sa data atrributima
 
+delegated event handle na reservation dio

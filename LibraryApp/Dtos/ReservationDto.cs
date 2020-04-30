@@ -9,7 +9,7 @@ namespace LibraryApp.Dtos
     public class ReservationDto
     {
 
-        public IEnumerable BookIds { get; set; }
+        public IEnumerable BookNames { get; set; }
 
         public int MemberId { get; set; }
 

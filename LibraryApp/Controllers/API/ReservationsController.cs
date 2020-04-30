@@ -34,12 +34,16 @@ namespace LibraryApp.Controllers.API
         public IHttpActionResult CreateReservation(ReservationDto reservationDto)
         {
 
-            foreach (string bookId in reservationDto.BookIds)
+            foreach (string bookName in reservationDto.BookNames)
             {
+                Book book = _context.Books.Single(c => c.Name == bookName);
+
+                
+                
                 var reservation = new Reservation
                 {
-                    BookId = int.Parse(bookId),
-                    MemberId = reservationDto.MemberId
+                     BookId = book.Id,
+                     MemberId = reservationDto.MemberId
                 };
 
                 _context.Reservations.Add(reservation);
