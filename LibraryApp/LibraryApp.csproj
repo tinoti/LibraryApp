@@ -210,6 +210,10 @@
     <Compile Include="Migrations\202004211607207_AddReservationModel.Designer.cs">
       <DependentUpon>202004211607207_AddReservationModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005021057142_AddAuthorToBookModel.cs" />
+    <Compile Include="Migrations\202005021057142_AddAuthorToBookModel.Designer.cs">
+      <DependentUpon>202005021057142_AddAuthorToBookModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
     <Compile Include="Models\Book.cs" />
@@ -648,6 +652,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004211607207_AddReservationModel.resx">
       <DependentUpon>202004211607207_AddReservationModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005021057142_AddAuthorToBookModel.resx">
+      <DependentUpon>202005021057142_AddAuthorToBookModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
