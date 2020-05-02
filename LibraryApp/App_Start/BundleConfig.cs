@@ -28,7 +28,7 @@ namespace LibraryApp
                       "~/Scripts/DataTables/dataTables.bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-lumen.css",
                       "~/Content/site.css",
                       "~/Content/typeahead.css",
                       "~/Content/DataTables/css/dataTables.bootstrap.css"));
