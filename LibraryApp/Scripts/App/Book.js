@@ -29,9 +29,28 @@
             dataSrc: ""
         },
         language: language,
+        createdRow: function (row, data, dataIndex) {
+
+            //Check if there is book on stock
+            if (data.NumberAvailable === 0) {
+
+                $(row).addClass("bookUnavailable");
+
+                var button = $(row).find("button");
+                button.attr("disabled", true);
+                button.html("Trenutno nedostupno");
+            }
+        },
         columns: [
             {
                 data: "Name"
+            },
+            {
+                data: "Author"
+            },
+            {
+                data: "NumberAvailable"
+    
             },
             {
                 data: "Name",
@@ -51,8 +70,8 @@
 
 
         //Creates and adds a new reservation to the DOM list 
-        var reservation = "<div>" + bookName + " <button class='btn btn-primary removeReservation' data-book-id='" + bookName + "'>Ukloni</button> </div>";
-        $('#bookList').prepend(reservation);
+        var reservation = "<div class='row'> <div class='col-xs-4'> <p>" + bookName + "</p> </div> <div class='col-xs-4'><button class='btn btn-primary removeReservation' data-book-id='" + bookName + "'>Ukloni</button> </div> </div>";
+        $('#bookList').append(reservation);
 
         //Add to the list
         list.push(bookName);
@@ -82,7 +101,7 @@
         var indexOfRemovedElement = list.indexOf(bookName);
 
         //Remove reservation from the DOM and from the list
-        $(this).parent().remove();
+        $(this).parent().parent().remove();
         list.splice(indexOfRemovedElement, 1);
 
         
@@ -122,4 +141,34 @@
 
 
 
+    //Makes the reservation list div follow the scrolling
+    $(function () {
+
+        var $sidebar = $("#reservationList"),
+            $window = $(window),
+            offset = $sidebar.offset(),
+            topPadding = 50;
+
+        $window.scroll(function () {
+            if ($window.scrollTop() > offset.top) {
+                $sidebar.stop().animate({
+                    marginTop: $window.scrollTop() - offset.top + topPadding
+                });
+            } else {
+                $sidebar.stop().animate({
+                    marginTop: 0
+                });
+            }
+        });
+
+    })();
+
+
+
 });
+
+
+
+
+
+

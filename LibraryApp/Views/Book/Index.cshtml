@@ -9,15 +9,17 @@
 <body>
 
 
-<div class="container-fluid">
+<div class="container">
     
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-xs-8">
             <table id="booksTable" class="table table-bordered table-hover">
 
                 <thead>
                 <tr>
                     <th>Knjiga</th>
+                    <th>Autor</th>
+                    <th>Raspoloživo</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -26,6 +28,15 @@
 
             </table>
 
+        </div>
+        
+        <div class="col-xs-4" id="reservationList">
+            <h2>Lista rezervacija: </h2>
+
+            <div id="bookList">
+
+                <button class="btn btn-primary"  id="makeReservation">Rezerviraj</button>
+            </div>
         </div>
 
     </div>
@@ -37,14 +48,7 @@
 
 
 
-<h2>Lista rezervacija: </h2>
 
-<div id="bookList">
-
-
-
-    <button class="btn btn-primary" id="makeReservation">Rezerviraj</button>
-</div>
 
 
 

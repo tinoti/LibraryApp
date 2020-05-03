@@ -32,3 +32,15 @@ textarea {
 .row {
     padding-top: 20px;
 }
+
+.bookUnavailable {
+    background: lightgrey;
+    opacity: 0.6;
+}
+
+
+#makeReservation {
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
