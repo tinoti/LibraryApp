@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
 
+    var bookList = [];
     var list = [];
 
     //If the app is coming from the Book view, split the query and put the values in list
@@ -37,7 +38,7 @@
 
         var MemberId = $('#MemberId').val();
 
-        var data = { 'BookNames': list, 'MemberId': MemberId };
+        var data = { 'Books': bookList, 'MemberId': MemberId };
 
 
         $.ajax({
@@ -47,8 +48,10 @@
             success: function () {
 
                 //Clear the form on success
+                bookList.splice(0, bookList.length);
+ 
+                drawInputs();
                 $('#MemberId').val('');
-                $('#BookId').val('');
             }
         });
 
@@ -76,14 +79,20 @@
             //which gives us the correct index
             var index = $(this).parent().parent().index();
 
-
+            var listElement = {
+                Name: book.Name,
+                Id: book.Id
+            };
 
             //checks if element at this index exists in the list, if it doesn't it means its a new input,
             // and if it does it means it's an edit of an existing input
             if (list[index] === undefined) {
+                
                 list.push(book.Name);
+                bookList.push(listElement);
             } else {
                 list.splice(index, 1, book.Name);
+                bookList.splice(index, 1, listElement);
             }
 
 
@@ -101,6 +110,7 @@
         //get index of span element in which is all this and remove that index from list
         var index = $(this).parent().index();
         list.splice(index, 1);
+        bookList.splice(index, 1);
 
         //then redraw inputs again
         drawInputs();
@@ -116,7 +126,13 @@
 
 
         //populate the input at the given index with the value from the list at given index
-        $(listOfInputs[index]).val(list[index]);
+
+
+        if (!(bookList[index] === undefined)) 
+            $(listOfInputs[index]).val(bookList[index].Name);
+        
+            
+
 
     }
 
@@ -133,10 +149,10 @@
 
 
             //Create empty inputs and populate them corresponding to how many elements are in the list (+ 1 to create the next empty input)
-            for (var i = 0; i < list.length + 1; i++) {
+            for (var i = 0; i < bookList.length + 1; i++) {
 
                 //check for MAX_INPUT, if it's the last input don't add new empty input
-                if (i === MAXINPUT && list.length === MAXINPUT) {
+                if (i === MAXINPUT && bookList.length === MAXINPUT) {
                     populateInput(i);
                     break;
                 }

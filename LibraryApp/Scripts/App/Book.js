@@ -2,6 +2,8 @@
 
     var list = [];
 
+    var listTest = [];
+
     //Language object for datatable
     var language = {
         "decimal": "",
