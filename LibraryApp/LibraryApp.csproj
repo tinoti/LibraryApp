@@ -394,6 +394,7 @@
     <Content Include="Content\lumen4.css" />
     <Content Include="Content\typeahead.css" />
     <Content Include="Documentation.txt" />
+    <Content Include="Dynamic HTML\EmptyInput.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

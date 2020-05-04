@@ -1,6 +1,8 @@
 ﻿$(document).ready(function () {
 
     var list = [];
+
+    //If the app is coming from the Book view, split the query and put the values in list
     if (list.length === 0) {
         if (window.location.search.split('?').length > 1) {
             var params = window.location.search.split('?')[1].split('&');
@@ -11,7 +13,6 @@
         }
     }
    
-
 
     var MAXINPUT = 4;
 
@@ -24,6 +25,7 @@
         }
     });
 
+    //Initialize
     drawInputs();
 
 
@@ -107,18 +109,6 @@
     
 
 
-    //Appends an empty input to the div
-    function createEmptyInput() {
-        var input = "<div class='typeaheadDiv'>" +
-            "<input type='text' class='typeaheadInput' placeholder='Dodaj knjigu'/>" +
-            "<a href='' class='removeInput'>X</a> " +
-            "</div>";
-
-        $('#dynamicInputDiv').append(input);
-
-    }
-
-
     //Populates the empty input with the value from the list at given index 
     function populateInput(index) {
 
@@ -134,31 +124,30 @@
     //handles the drawing of inputs, this gets called every time there's a new input or editing of a existing one
     function drawInputs() {
 
+        //Get the empty input div from another file for easier manipulation, everything else is in callback function because of async
+        $.get("../../Dynamic Html/EmptyInput.html", function (input) {
 
-        //First, remove all inputs
-        $('#dynamicInputDiv').empty();
+            //First, remove all inputs
+            $('#dynamicInputDiv').empty();
 
 
 
-        //Create empty inputs and populate them corresponding to how many elements are in the list (+ 1 to create the next empty input)
-        for (var i = 0; i < list.length + 1; i++) {
+            //Create empty inputs and populate them corresponding to how many elements are in the list (+ 1 to create the next empty input)
+            for (var i = 0; i < list.length + 1; i++) {
 
-            //check for MAX_INPUT, if it's the last input don't add new empty input
-            if (i === MAXINPUT && list.length === MAXINPUT) {
+                //check for MAX_INPUT, if it's the last input don't add new empty input
+                if (i === MAXINPUT && list.length === MAXINPUT) {
+                    populateInput(i);
+                    break;
+                }
+
+                $('#dynamicInputDiv').append(input);
+
                 populateInput(i);
-                break;
             }
 
-            createEmptyInput();
-
-            populateInput(i);
-        }
-
-        //bond typeahead to inputs
-        typeaheadInit();
-
-
-
+            //bond typeahead to inputs
+            typeaheadInit();
+        });
     }
-
 });

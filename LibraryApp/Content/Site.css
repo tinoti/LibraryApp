@@ -20,7 +20,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    
 }
 
 
@@ -43,4 +43,20 @@ textarea {
     margin-top: 20px;
     margin-left: 50px;
 }
+
+.twitter-typeahead, .tt-hint, .tt-input, .tt-menu {
+    width: 30%;
+    margin-bottom: 10px;
+}
+
+
+.typeaheadInput {
+    width: 100%;
+}
+
+#MemberId {
+    width: 30%;
+}
+
+
 
