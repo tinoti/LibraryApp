@@ -1,14 +1,7 @@
 ﻿$(document).ready(function () {
 
-    var list = [];
     var bookList = [];
-    var listTest = [
-        {
-            Name: "x",
-            Id: 2
-        }
-    ];
-
+    var MAX_INPUT = 4;
 
 
     //Language object for datatable
@@ -76,31 +69,40 @@
 
         var bookId = $(this).attr("data-book-id");
         bookId = parseInt(bookId);
+        var currentButton = $(this);
 
         $.get("/api/books", function (data) {
 
 
+            //Check if there is already maximum books added to the list
+            if ($('#bookList').children('div').length === MAX_INPUT) {
+                bootbox.alert("Dosegnut maksimalni broj rezervacija");
+            } else {
+                var book = data.find(o => o.Id === bookId);
 
-            var book = data.find(o => o.Id === bookId);
+                //Creates and adds a new reservation to the DOM list 
+                var reservation = "<div class='row'> <div class='col-xs-4'> <p>" + book.Name + "</p> </div> <div class='col-xs-4'><button class='btn btn-primary removeReservation' data-book-id='" + book.Id + "'>Ukloni</button> </div> </div>";
+                $('#bookList').append(reservation);
 
-            //Creates and adds a new reservation to the DOM list 
-            var reservation = "<div class='row'> <div class='col-xs-4'> <p>" + book.Name + "</p> </div> <div class='col-xs-4'><button class='btn btn-primary removeReservation' data-book-id='" + book.Id + "'>Ukloni</button> </div> </div>";
-            $('#bookList').append(reservation);
 
-            //Add to the list
-            bookList.push(book.Id);
+                //Add to the list
+                bookList.push(book.Id); 
 
+                //Update the number reserved
+                $('#numberReserved').html("Broj rezervacija: " + bookList.length + "/4");
+
+                //Disable the add reservation button and change it's description
+                $(currentButton).attr('disabled', true);
+                $(currentButton).html("Dodano!");
+
+                //Add greenBackground class (includes opacity) to the whole div
+                $(currentButton).parent().parent().addClass("greenBackground");
+
+                //Show the reservation div
+                $('#reservationList').show();
+
+            }
         });
-
-
-        //Disable the add reservation button and change it's description
-        $(this).attr('disabled', true);
-        $(this).html("Dodano!");
-
-        //Add greenBackground class (includes opacity) to the whole div
-        $(this).parent().parent().addClass("greenBackground");
-
-
     });
 
 
@@ -115,6 +117,13 @@
         //Remove reservation from the DOM and from the list
         $(this).parent().parent().remove();
         bookList.splice(indexOfRemovedElement, 1);
+
+        //Update the number reserved
+        $('#numberReserved').html("Broj rezervacija: " + bookList.length + "/4");
+
+        //If there is no reservations, hide the reservation div
+        if(bookList.length === 0)
+            $('#reservationList').hide();
 
         
         //Get the button element in the datatable that corresponds with the reservation so we can return it to normal

@@ -4,53 +4,48 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../../Scripts/App/Book.js"></script>
 
 </head>
 <body>
 
 
-<div class="container">
-    
-    <div class="row">
-        <div class="col-xs-8">
-            <table id="booksTable" class="table table-bordered table-hover">
+    <div class="container">
 
-                <thead>
-                <tr>
-                    <th>Knjiga</th>
-                    <th>Autor</th>
-                    <th>Raspoloživo</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
+        <div class="row">
+            <div class="col-xs-8">
+                <table id="booksTable" class="table table-bordered table-hover">
 
-            </table>
+                    <thead>
+                        <tr>
+                            <th>Knjiga</th>
+                            <th>Autor</th>
+                            <th>Raspoloživo</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
 
-        </div>
-        
-        <div class="col-xs-4" id="reservationList">
-            <h2>Lista rezervacija: </h2>
+                </table>
 
-            <div id="bookList">
-
-                <button class="btn btn-primary"  id="makeReservation">Rezerviraj</button>
             </div>
+
+            <div class="col-xs-4" id="reservationList" hidden="true">
+                <h2>Lista rezervacija: </h2>
+                <p id="numberReserved"></p>
+
+                <div id="bookList">
+
+                    <button class="btn btn-primary" id="makeReservation">Rezerviraj</button>
+                </div>
+            </div>
+
         </div>
 
     </div>
 
-</div>
-
-
-
-
-
-
-
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/book")
 
 
 

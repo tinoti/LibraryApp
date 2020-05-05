@@ -4,32 +4,31 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../../Scripts/App/Reservation.js"></script>
 
 </head>
 <body>
-<div>
-    <h2>Rezervacije</h2>
+    <div>
+        <h2>Rezervacije</h2>
 
-    <form id="reservationForm">
-        
-        <div id="dynamicInputDiv" class="form-group">
+        <form id="reservationForm">
 
-        </div>
+            <div id="dynamicInputDiv" class="form-group">
+
+            </div>
 
 
 
-        <label for="MemberId">Broj članske iskaznice:</label><br>
-        <input type="text" id="MemberId" name="MemberId" class="form-control"> <br />
-        <input type="submit" value="Pošalji" class="btn btn-primary">
-    </form>
+            <label for="MemberId">Broj članske iskaznice:</label><br>
+            <input type="text" id="MemberId" name="MemberId" class="form-control"> <br />
+            <input type="submit" value="Pošalji" class="btn btn-primary">
+        </form>
 
 </div>
 
 
 
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/reservation")
+
 </body>
-
-
 </html>

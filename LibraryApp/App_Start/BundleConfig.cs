@@ -21,6 +21,7 @@ namespace LibraryApp
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootbox.js",
                       "~/Scripts/typeahead.bundle.js",
                       "~/Scripts/DataTables/jquery.dataTables.js",
                       "~/Scripts/DataTables/dataTables.bootstrap.js"));
@@ -30,6 +31,12 @@ namespace LibraryApp
                       "~/Content/site.css",
                       "~/Content/typeahead.css",
                       "~/Content/DataTables/css/dataTables.bootstrap.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/book").Include(
+                "~/Scripts/App/Book.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/reservation").Include(
+                "~/Scripts/App/Reservation.js"));
         }
     }
 }
