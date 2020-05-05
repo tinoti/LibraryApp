@@ -1,8 +1,15 @@
 ﻿$(document).ready(function () {
 
     var list = [];
+    var bookList = [];
+    var listTest = [
+        {
+            Name: "x",
+            Id: 2
+        }
+    ];
 
-    var listTest = [];
+
 
     //Language object for datatable
     var language = {
@@ -55,7 +62,7 @@
     
             },
             {
-                data: "Name",
+                data: "Id",
                 render: function(data) {
                     return "<button class='btn btn-primary bookReservation' data-book-id='" + data +"'>Dodaj na listu</button>";
                 }
@@ -67,16 +74,24 @@
     //Handles the reservation event
     $('#booksTable').on("click", ".bookReservation", function (e) {
 
+        var bookId = $(this).attr("data-book-id");
+        bookId = parseInt(bookId);
 
-        var bookName = $(this).attr('data-book-id');
+        $.get("/api/books", function (data) {
 
 
-        //Creates and adds a new reservation to the DOM list 
-        var reservation = "<div class='row'> <div class='col-xs-4'> <p>" + bookName + "</p> </div> <div class='col-xs-4'><button class='btn btn-primary removeReservation' data-book-id='" + bookName + "'>Ukloni</button> </div> </div>";
-        $('#bookList').append(reservation);
 
-        //Add to the list
-        list.push(bookName);
+            var book = data.find(o => o.Id === bookId);
+
+            //Creates and adds a new reservation to the DOM list 
+            var reservation = "<div class='row'> <div class='col-xs-4'> <p>" + book.Name + "</p> </div> <div class='col-xs-4'><button class='btn btn-primary removeReservation' data-book-id='" + book.Id + "'>Ukloni</button> </div> </div>";
+            $('#bookList').append(reservation);
+
+            //Add to the list
+            bookList.push(book.Id);
+
+        });
+
 
         //Disable the add reservation button and change it's description
         $(this).attr('disabled', true);
@@ -84,11 +99,6 @@
 
         //Add greenBackground class (includes opacity) to the whole div
         $(this).parent().parent().addClass("greenBackground");
-
-        
-
-        
-
 
 
     });
@@ -98,17 +108,17 @@
     //Removes the reservation from the reservation list
     $('#bookList').on("click",".removeReservation", function() {
 
-        var bookName = $(this).attr('data-book-id');
+        var bookId = $(this).attr('data-book-id');
 
-        var indexOfRemovedElement = list.indexOf(bookName);
+        var indexOfRemovedElement = bookList.indexOf(bookId);
 
         //Remove reservation from the DOM and from the list
         $(this).parent().parent().remove();
-        list.splice(indexOfRemovedElement, 1);
+        bookList.splice(indexOfRemovedElement, 1);
 
         
         //Get the button element in the datatable that corresponds with the reservation so we can return it to normal
-        var reservationButton = $("button[data-book-id='" + bookName + "']")
+        var reservationButton = $("button[data-book-id='" + bookId + "']")
 
         //Make it clickable again
         reservationButton.attr('disabled', false);
@@ -129,8 +139,8 @@
         var url = "/Reservation/Index?";
 
         //Add data to the url query
-        list.forEach(function(book) {
-            url += "BookName=" + encodeURIComponent(book) + "&";
+        bookList.forEach(function(bookId) {
+            url += "BookId=" + encodeURIComponent(bookId) + "&";
         });
 
         //Removes the last "&" from the query

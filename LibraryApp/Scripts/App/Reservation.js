@@ -1,15 +1,15 @@
 ﻿$(document).ready(function () {
 
     var bookList = [];
-    var list = [];
+    var bookIds = [];
 
-    //If the app is coming from the Book view, split the query and put the values in list
-    if (list.length === 0) {
+    //If the app is coming from the Book view, split the query and put the values in bookIds list
+    if (bookList.length === 0) {
         if (window.location.search.split('?').length > 1) {
             var params = window.location.search.split('?')[1].split('&');
             for (var i = 0; i < params.length; i++) {
                 var value = decodeURIComponent(params[i].split('=')[1]);
-                list.push(value);
+                bookIds.push(parseInt(value));
             }
         }
     }
@@ -26,8 +26,34 @@
         }
     });
 
-    //Initialize
-    drawInputs();
+    //If coming from Book view, GET all the books from the database and search for the ids and display the books
+    if (!(bookIds.length === 0)) {
+        $.get("/api/books", function (data) {
+
+            bookIds.forEach(function (bookId) {
+
+                
+                var book = data.find(o => o.Id === bookId);
+
+                var bookElement =
+                {
+                    Name: book.Name,
+                    Id: book.Id
+                };
+
+                bookList.push(bookElement);
+
+            });
+
+            drawInputs();
+
+        });
+
+    } else {
+        drawInputs();
+    }
+
+
 
 
 
@@ -47,10 +73,13 @@
             data: data,
             success: function () {
 
-                //Clear the form on success
+                //Clear the list on success
                 bookList.splice(0, bookList.length);
- 
+
+                //After the list is clear, draw the inputs again
                 drawInputs();
+
+                //Clear member id 
                 $('#MemberId').val('');
             }
         });
@@ -86,12 +115,10 @@
 
             //checks if element at this index exists in the list, if it doesn't it means its a new input,
             // and if it does it means it's an edit of an existing input
-            if (list[index] === undefined) {
-                
-                list.push(book.Name);
+            if (bookList[index] === undefined) {
+
                 bookList.push(listElement);
             } else {
-                list.splice(index, 1, book.Name);
                 bookList.splice(index, 1, listElement);
             }
 
@@ -109,7 +136,6 @@
 
         //get index of span element in which is all this and remove that index from list
         var index = $(this).parent().index();
-        list.splice(index, 1);
         bookList.splice(index, 1);
 
         //then redraw inputs again
@@ -130,9 +156,6 @@
 
         if (!(bookList[index] === undefined)) 
             $(listOfInputs[index]).val(bookList[index].Name);
-        
-            
-
 
     }
 
