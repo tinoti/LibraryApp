@@ -19,6 +19,8 @@ namespace LibraryApp.Controllers.API
         private ApplicationDbContext _context;
         private IMapper mapper;
 
+        private const int MAX_RESERVATIONS = 4;
+
         public ReservationsController()
         {
             _context = new ApplicationDbContext();
@@ -34,23 +36,46 @@ namespace LibraryApp.Controllers.API
         public IHttpActionResult CreateReservation(ReservationDto reservationDto)
         {
 
+            //Number of reservations by same member id in database
+            var numberOfReservations = _context.Reservations.ToList().FindAll(o => o.MemberId == reservationDto.MemberId).Count;
+
+            List<BookDto> successReservation = new List<BookDto>();
+            List<BookDto> failReservation = new List<BookDto>();
+
+            List<List<BookDto>> reservationsList = new List<List<BookDto>>();
+
+
+            //Add reservations, if max reservations is reached add to failReservation list, else add to successResevation list and to database
             foreach (BookDto book in reservationDto.Books)
             {
-
-
-                var reservation = new Reservation
+                if (numberOfReservations >= MAX_RESERVATIONS)
                 {
-                     BookId = book.Id,
-                     MemberId = reservationDto.MemberId
-                };
+                    failReservation.Add(book);
+                }
+                else
+                {
+                    var reservation = new Reservation
+                    {
+                        BookId = book.Id,
+                        MemberId = reservationDto.MemberId
+                    };
 
-                _context.Reservations.Add(reservation);
+                    _context.Reservations.Add(reservation);
+
+                    numberOfReservations++;
+
+                    successReservation.Add(book);
+                }                  
+                
             }
 
-            
             _context.SaveChanges();
 
-            return Ok();
+            reservationsList.Add(successReservation);
+            reservationsList.Add(failReservation);
+
+            //Send list of failed and succedded reservations back for toastr display
+            return Ok(reservationsList);
         }
     }
 }

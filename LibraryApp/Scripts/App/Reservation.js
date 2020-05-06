@@ -71,7 +71,19 @@
             url: "/api/reservations",
             method: "POST",
             data: data,
-            success: function () {
+            dataType: "json",
+            success: function (data) {
+
+                //Display success message for each successful reservation
+                data[0].forEach(function (book) {
+                    toastr.success("Knjiga " + book.Name + " je uspješno dodana na listu rezervacija!");
+
+                });
+
+                //Display error message for each failed reservation
+                data[1].forEach(function (book) {
+                    toastr.error("Knjiga " + book.Name + " nije dodana. Dosegnut je maksimalan broj rezervacija.")
+                });
 
                 //Clear the list on success
                 bookList.splice(0, bookList.length);
@@ -189,4 +201,9 @@
             typeaheadInit();
         });
     }
+
+
+
+
+
 });

@@ -30,13 +30,16 @@ namespace LibraryApp
                       "~/Content/bootstrap-lumen.css",
                       "~/Content/site.css",
                       "~/Content/typeahead.css",
-                      "~/Content/DataTables/css/dataTables.bootstrap.css"));
+                      "~/Content/DataTables/css/dataTables.bootstrap.css",
+                      "~/Content/toastr.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/book").Include(
-                "~/Scripts/App/Book.js"));
+                "~/Scripts/App/Book.js",
+                "~/Scripts/toastr.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/reservation").Include(
-                "~/Scripts/App/Reservation.js"));
+                "~/Scripts/App/Reservation.js",
+                 "~/Scripts/toastr.js"));
         }
     }
 }
