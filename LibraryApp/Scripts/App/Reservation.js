@@ -22,11 +22,31 @@
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
             url: '/api/books?query=%QUERY',
-            wildcard: '%QUERY'
+            wildcard: '%QUERY',
+            transform: function (response) {
+
+                //Sorts the suggestions by name 
+               var sortedResponse = response.sort(function (a, b) {
+                    var nameA = a.Name.toUpperCase(); // ignore upper and lowercase
+                    var nameB = b.Name.toUpperCase(); // ignore upper and lowercase
+                    if (nameA < nameB) {
+                        return -1;
+                    }
+                    if (nameA > nameB) {
+                        return 1;
+                    }
+
+                    // names must be equal
+                    return 0;
+                });
+
+                return sortedResponse;
+            }
         }
+        
     });
 
-    //If coming from Book view, GET all the books from the database and search for the ids and display the books
+    //If coming from Book view, GET all the books from the database and search for the ids and display the books, else just draw first input
     if (!(bookIds.length === 0)) {
         $.get("/api/books", function (data) {
 
@@ -134,10 +154,12 @@
                 bookList.splice(index, 1, listElement);
             }
 
-
+           
             drawInputs();
 
         });
+
+
 
     };
 
