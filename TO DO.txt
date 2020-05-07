@@ -1,11 +1,13 @@
 dodati errore kada se krivo upiše, server i client side
 
-typeahead sortiranje suggestiona
-
 dodati anti forgery
 
-data table jezik na hrv
+maknuti input iz slijedecih typeahead suggestiona kada ga se selecta
 
-možda napraviti reservation dio sa data atrributima
+implementirati cijelokupno provjeravanje availability knjige
 
-delegated event handle na reservation dio
+dodati view single book view
+
+u Book view, kada se prijede mišem preko imena knjige, dodati da se vidi slika te knjige
+
+pogledati mogucnost stavljanja koda u zasebne funkcije radi lakšeg snalaženja

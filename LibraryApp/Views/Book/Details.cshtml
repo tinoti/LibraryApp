@@ -1,0 +1,37 @@
+﻿@model LibraryApp.Models.Book
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead>
+
+            </thead>
+            <h2>@Model.Name</h2>
+            <tbody>
+                <tr>
+                    <td scope="row"><strong>Autor:</strong> @Model.Author</td>               
+                </tr>
+                <tr>                  
+                    <td><strong>Žanr:</strong> @Model.BookGenre.Name</td>
+                </tr>
+                <tr>
+                    <td><strong>Na stanju: </strong> @Model.NumberInStock</td>
+                </tr>
+                <tr>
+                    <td><strong>Godina izdavanja: </strong> @Model.ReleaseYear</td>
+                </tr>
+                <tr>
+                    <td><strong>Opis: </strong> @Model.Description</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

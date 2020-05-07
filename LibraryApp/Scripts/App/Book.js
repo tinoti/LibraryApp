@@ -45,7 +45,12 @@
         },
         columns: [
             {
-                data: "Name"
+                data: "Name",
+                render: function (data, type, row) {
+                    console.log(type);
+                    console.log(row);
+                    return "<a href='/Book/Details/" + row.Id + "'>" + row.Name + "</a>";
+                }
             },
             {
                 data: "Author"

@@ -35,5 +35,17 @@ namespace LibraryApp.Controllers.API
             var books = booksQuery.ToList();
             return Ok(mapper.Map<List<BookDto>>(books));
         }
+
+
+        //GET /api/books/id
+        public IHttpActionResult GetBook(int id)
+        {
+            var book = _context.Books.SingleOrDefault(b => b.Id == id);
+            if(book == null)
+            {
+                return NotFound();
+            }
+            return Ok(mapper.Map<BookDto>(book));
+        }
     }
 }
