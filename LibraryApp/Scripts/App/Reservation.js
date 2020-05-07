@@ -38,6 +38,9 @@
 
                     // names must be equal
                     return 0;
+               });
+
+                var availableBooks = sortedResponse.forEach(function (book) {
                 });
 
                 return sortedResponse;
@@ -45,6 +48,7 @@
         }
         
     });
+
 
     //If coming from Book view, GET all the books from the database and search for the ids and display the books, else just draw first input
     if (!(bookIds.length === 0)) {
@@ -130,7 +134,16 @@
             name: 'books',
             limit: 20,
             display: 'Name',
-            source: book
+            source: book,
+            templates: {
+                //This fires for every suggestion that shows up, if it's not available make it unclickable in the suggestion box
+                suggestion: function (data) {
+                    if (data.NumberAvailable <= 0)
+                       return "<div class='notAvailable'>" + data.Name + "<span class='notAvailableSpan'>\t\t trenutno nedostupna</span></div>";
+                    return "<div class=''>" + data.Name + "</div>";
+                }
+
+                }
         }).on("typeahead:select", function (e, book) {
 
             //get index of selected element
@@ -154,7 +167,7 @@
                 bookList.splice(index, 1, listElement);
             }
 
-           
+
             drawInputs();
 
         });

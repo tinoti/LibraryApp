@@ -54,6 +54,16 @@ namespace LibraryApp.Controllers.API
                 }
                 else
                 {
+                    //Get book in db by id and check if it's available, also checks if id is correct (Single throws exception if not found)
+                    var bookInDb = _context.Books.Single(b => b.Id == book.Id);
+
+                    if (bookInDb.NumberAvailable <= 0)
+                        return BadRequest();
+
+                    //Update number in stock
+                    bookInDb.NumberAvailable--;
+
+                    //Add reservation
                     var reservation = new Reservation
                     {
                         BookId = book.Id,

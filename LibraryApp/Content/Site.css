@@ -59,4 +59,17 @@ textarea {
 }
 
 
+.notAvailable{
+    pointer-events:none;
+    background-color:lightgray;
+    opacity: 0.6;
+}
+
+.notAvailableSpan{
+    white-space:pre;
+    color:lightslategrey;
+    float:right;
+
+}
+
 
