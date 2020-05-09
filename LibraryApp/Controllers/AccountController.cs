@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using LibraryApp.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using LibraryApp.Models.Identity;
 
 namespace LibraryApp.Controllers
 {
@@ -155,6 +157,8 @@ namespace LibraryApp.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
+                   
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

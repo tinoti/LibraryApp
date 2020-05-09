@@ -46,8 +46,8 @@
         columns: [
             {
                 data: "Name",
-                render: function (data, type, row) {
-                    return "<a href='/Book/Details/" + row.Id + "'>" + row.Name + "</a>";
+                render: function (data, type, book) {
+                    return "<a class='test' href='/Book/Details/" + book.Id + "' data-mfp-src='../../image.jpg'>" + book.Name + "</a>";
                 }
             },
             {
@@ -186,6 +186,9 @@
         });
 
     });
+
+
+   
 
 
 

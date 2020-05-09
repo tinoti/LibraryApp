@@ -214,6 +214,10 @@
     <Compile Include="Migrations\202005021057142_AddAuthorToBookModel.Designer.cs">
       <DependentUpon>202005021057142_AddAuthorToBookModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005090928188_seedAdmin.cs" />
+    <Compile Include="Migrations\202005090928188_seedAdmin.Designer.cs">
+      <DependentUpon>202005090928188_seedAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
     <Compile Include="Models\Book.cs" />
@@ -399,6 +403,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="image.jpg" />
     <Content Include="Scripts\App\Book.js" />
     <Content Include="Scripts\App\Reservation.js" />
     <Content Include="Scripts\bloodhound.js" />
@@ -660,6 +665,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005021057142_AddAuthorToBookModel.resx">
       <DependentUpon>202005021057142_AddAuthorToBookModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005090928188_seedAdmin.resx">
+      <DependentUpon>202005090928188_seedAdmin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
