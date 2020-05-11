@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -29,7 +30,20 @@ namespace LibraryApp.Controllers.API
 
 
 
-        
+
+        //GET /api/reservations
+        [Authorize(Roles = RoleName.Admin + "," + RoleName.Employee)]
+        public IHttpActionResult GetReservations()
+        {
+
+            var reservations = _context.Reservations
+                .Include(o => o.Book)
+                .Include(o => o.Member)
+                .ToList();
+
+            return Ok(reservations);
+        }
+
 
         //POST /api/reservations
         [HttpPost]
@@ -87,5 +101,9 @@ namespace LibraryApp.Controllers.API
             //Send list of failed and succedded reservations back for toastr display
             return Ok(reservationsList);
         }
+
+
+
+        
     }
 }

@@ -9,6 +9,7 @@ using LibraryApp.App_Start;
 using LibraryApp.Models.Identity;
 using System.Data.Entity;
 using LibraryApp.Dtos;
+using LibraryApp.Models;
 
 namespace LibraryApp.Controllers.API
 {
@@ -47,5 +48,22 @@ namespace LibraryApp.Controllers.API
             }
             return Ok(mapper.Map<BookDto>(book));
         }
+
+
+        //POST /api/books/id
+        [Authorize(Roles = RoleName.Admin + "," + RoleName.Employee)]
+        public IHttpActionResult DeleteBook(int id)
+        {
+            var bookInDb = _context.Books.SingleOrDefault(b => b.Id == id);
+            if (bookInDb == null)
+                return NotFound();
+
+            _context.Books.Remove(bookInDb);
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
+
     }
 }

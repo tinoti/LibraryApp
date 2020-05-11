@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,10 @@ namespace LibraryApp.Controllers
         // GET: Reservation
         public ActionResult Index()
         {
-            return View();
+            if (User.IsInRole(RoleName.Admin) || User.IsInRole(RoleName.Employee))
+                return View("EmployeeIndex");
+
+            return View("Index");
         }
     }
 }

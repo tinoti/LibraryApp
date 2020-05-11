@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -23,6 +24,12 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Rezervacije", "Index", "Reservation")</li>
                     <li>@Html.ActionLink("Knjige", "Index", "Book")</li>
+                    @if (User.IsInRole(LibraryApp.Models.RoleName.Admin))
+                    {
+                        <li>@Html.ActionLink("Dodaj knjigu", "New", "Book")</li>
+
+                        <li>@Html.ActionLink("Dodaj zaposlenika", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                    }
 
                 </ul>
                 @Html.Partial("_LoginPartial")

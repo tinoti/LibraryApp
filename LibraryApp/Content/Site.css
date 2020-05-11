@@ -84,3 +84,15 @@ textarea {
     margin: 20px auto;
 }
 
+label{
+    font-weight:bold;
+}
+
+
+.field-validation-error {
+    color: red;
+}
+
+.input-validation-error {
+    border: 2px solid red;
+}

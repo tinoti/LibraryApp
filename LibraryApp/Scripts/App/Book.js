@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿
+
+$(document).ready(function () {
 
     var bookList = [];
     var MAX_INPUT = 4;
@@ -47,7 +49,7 @@
             {
                 data: "Name",
                 render: function (data, type, book) {
-                    return "<a class='test' href='/Book/Details/" + book.Id + "' data-mfp-src='../../image.jpg'>" + book.Name + "</a>";
+                    return "<a href='/Book/Details/" + book.Id + "'>" + book.Name + "</a>";
                 }
             },
             {

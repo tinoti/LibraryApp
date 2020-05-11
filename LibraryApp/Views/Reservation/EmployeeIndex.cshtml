@@ -18,10 +18,8 @@
                     <thead>
                         <tr>
                             <th>Knjiga</th>
-                            <th>Autor</th>
-                            <th>Raspoloživo</th>
-                            <th></th>
-                            <th></th>
+                            <th>Član</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -31,15 +29,6 @@
 
             </div>
 
-            <div class="col-xs-4" id="reservationList" hidden="true">
-                <h2>Lista rezervacija: </h2>
-                <p id="numberReserved"></p>
-
-                <div id="bookList">
-
-                    <button class="btn btn-primary" id="makeReservation">Rezerviraj</button>
-                </div>
-            </div>
 
         </div>
 
@@ -48,7 +37,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/book")
+    @Scripts.Render("~/bundles/employeeReservation")
 
 
 

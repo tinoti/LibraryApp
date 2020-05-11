@@ -40,6 +40,15 @@ namespace LibraryApp
             bundles.Add(new ScriptBundle("~/bundles/reservation").Include(
                 "~/Scripts/App/Reservation.js",
                  "~/Scripts/toastr.js"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/employeeBook").Include(
+                "~/Scripts/App/EmployeeBook.js",
+                 "~/Scripts/toastr.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/employeeReservation").Include(
+                "~/Scripts/App/EmployeeReservation.js",
+                 "~/Scripts/toastr.js"));
         }
     }
 }

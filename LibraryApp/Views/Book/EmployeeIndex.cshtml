@@ -30,25 +30,18 @@
                 </table>
 
             </div>
-
-            <div class="col-xs-4" id="reservationList" hidden="true">
-                <h2>Lista rezervacija: </h2>
-                <p id="numberReserved"></p>
-
-                <div id="bookList">
-
-                    <button class="btn btn-primary" id="makeReservation">Rezerviraj</button>
-                </div>
-            </div>
+          
 
         </div>
 
     </div>
 
 
+    @Html.ActionLink("Dodaj knjigu", "New", "Book", null, new { @class = "btn btn-primary" })
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/book")
+    @Scripts.Render("~/bundles/employeeBook")
 
 
 
