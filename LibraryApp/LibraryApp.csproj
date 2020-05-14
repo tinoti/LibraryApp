@@ -188,8 +188,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\BooksController.cs" />
+    <Compile Include="Controllers\API\EmployeesController.cs" />
     <Compile Include="Controllers\API\ReservationsController.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReservationController.cs" />
@@ -432,6 +434,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="image.jpg" />
+    <Content Include="Scripts\App\AdminEmployee.js" />
     <Content Include="Scripts\App\EmployeeBook.js" />
     <Content Include="Scripts\App\Book.js" />
     <Content Include="Scripts\App\EmployeeReservation.js" />
@@ -677,6 +680,7 @@
     <Content Include="Views\Book\EmployeeIndex.cshtml" />
     <Content Include="Views\Book\AddOrEdit.cshtml" />
     <Content Include="Views\Reservation\EmployeeIndex.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

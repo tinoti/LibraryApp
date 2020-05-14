@@ -49,6 +49,10 @@ namespace LibraryApp
             bundles.Add(new ScriptBundle("~/bundles/employeeReservation").Include(
                 "~/Scripts/App/EmployeeReservation.js",
                  "~/Scripts/toastr.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/adminEmployee").Include(
+                "~/Scripts/App/AdminEmployee.js",
+                 "~/Scripts/toastr.js"));
         }
     }
 }

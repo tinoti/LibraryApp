@@ -26,9 +26,7 @@
                     <li>@Html.ActionLink("Knjige", "Index", "Book")</li>
                     @if (User.IsInRole(LibraryApp.Models.RoleName.Admin))
                     {
-                        <li>@Html.ActionLink("Dodaj knjigu", "New", "Book")</li>
-
-                        <li>@Html.ActionLink("Dodaj zaposlenika", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                        <li>@Html.ActionLink("Zaposlenici", "Index","Employee") </li>                       
                     }
 
                 </ul>

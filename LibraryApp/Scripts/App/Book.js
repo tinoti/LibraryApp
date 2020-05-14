@@ -56,6 +56,9 @@ $(document).ready(function () {
                 data: "Author"
             },
             {
+                data: "BookGenre.Name"
+            },
+            {
                 data: "NumberAvailable"
     
             },
