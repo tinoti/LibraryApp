@@ -1,6 +1,8 @@
 ﻿$(document).ready(function () {
 
     var bookList = [];
+
+    //for coming from BookView
     var bookIds = [];
 
     //If the app is coming from the Book view, split the query and put the values in bookIds list
@@ -138,8 +140,11 @@
             templates: {
                 //This fires for every suggestion that shows up, if it's not available make it unclickable in the suggestion box
                 suggestion: function (data) {
-                    if (data.NumberAvailable <= 0)
-                       return "<div class='notAvailable'>" + data.Name + "<span class='notAvailableSpan'>\t\t trenutno nedostupna</span></div>";
+                    if (bookList.find(book => book.Id == data.Id) != undefined)
+                        return "<div class='notAvailable'>" + data.Name + "<span class='notAvailableSpan'>\t\t već odabrana!</span></div>";
+                    else if (data.NumberAvailable <= 0)
+                        return "<div class='notAvailable'>" + data.Name + "<span class='notAvailableSpan'>\t\t trenutno nedostupna</span></div>";
+
                     return "<div class=''>" + data.Name + "</div>";
                 }
 

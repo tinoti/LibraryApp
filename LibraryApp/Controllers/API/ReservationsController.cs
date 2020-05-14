@@ -19,6 +19,7 @@ namespace LibraryApp.Controllers.API
     {
         private ApplicationDbContext _context;
         private IMapper mapper;
+        private int REJECTED;
 
         private const int MAX_RESERVATIONS = 4;
         
@@ -26,6 +27,7 @@ namespace LibraryApp.Controllers.API
         {
             _context = new ApplicationDbContext();
             mapper = new MappingProfile().MapReservation();
+            REJECTED = 3;
         }
 
 
@@ -112,11 +114,15 @@ namespace LibraryApp.Controllers.API
         public IHttpActionResult UpdateReservation(UpdateReservationDto updateReservationDto)
         {
 
-            var reservationInDb = _context.Reservations.SingleOrDefault( o => o.Id == updateReservationDto.ReservationId);
+            var reservationInDb = _context.Reservations.Include(o => o.Book).SingleOrDefault( o => o.Id == updateReservationDto.ReservationId);
             if (reservationInDb == null)
                 return NotFound();
 
             reservationInDb.ReservationStatusId = updateReservationDto.StatusId;
+
+            //if the reservation is rejected, make book available again
+            if (updateReservationDto.StatusId == REJECTED)
+                reservationInDb.Book.NumberAvailable++;
 
             _context.SaveChanges();
 

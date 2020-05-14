@@ -6,8 +6,10 @@ maknuti input iz slijedecih typeahead suggestiona kada ga se selecta
 
 implementirati cijelokupno provjeravanje availability knjige
 
-dodati view single book view
-
-u Book view, kada se prijede mišem preko imena knjige, dodati da se vidi slika te knjige
 
 pogledati mogucnost stavljanja koda u zasebne funkcije radi lakšeg snalaženja
+
+
+SADA
+
+kod reservationo viewa anonimnog korisnika, kada se odabere jedna knjiga maknuti ju sa popisa kod odabira slijedece
