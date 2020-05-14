@@ -17,6 +17,8 @@ namespace LibraryApp.Models.Identity
 
         public DbSet<Reservation> Reservations { get; set; }
 
+        public DbSet<ReservationStatus> ReservationStatuses { get; set; }
+
 
 
         public ApplicationDbContext()

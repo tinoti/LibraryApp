@@ -19,5 +19,12 @@ namespace LibraryApp.Models
 
         [Required]
         public int MemberId { get; set; }
+
+        public ReservationStatus ReservationStatus { get; set; }
+
+        [Required]
+        public int ReservationStatusId { get; set; }
+
+
     }
 }

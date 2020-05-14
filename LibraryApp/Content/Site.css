@@ -96,3 +96,17 @@ label{
 .input-validation-error {
     border: 2px solid red;
 }
+
+
+.pending{
+    background-color:lightyellow;
+}
+
+
+.accepted{
+    background-color:lightgreen;
+}
+
+.rejected{
+    background-color:lightcoral;
+}

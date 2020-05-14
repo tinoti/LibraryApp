@@ -21,7 +21,7 @@ namespace LibraryApp.Controllers.API
         private IMapper mapper;
 
         private const int MAX_RESERVATIONS = 4;
-
+        
         public ReservationsController()
         {
             _context = new ApplicationDbContext();
@@ -39,6 +39,7 @@ namespace LibraryApp.Controllers.API
             var reservations = _context.Reservations
                 .Include(o => o.Book)
                 .Include(o => o.Member)
+                .Include(o => o.ReservationStatus)
                 .ToList();
 
             return Ok(reservations);
@@ -81,7 +82,8 @@ namespace LibraryApp.Controllers.API
                     var reservation = new Reservation
                     {
                         BookId = book.Id,
-                        MemberId = reservationDto.MemberId
+                        MemberId = reservationDto.MemberId,
+                        ReservationStatusId = 1
                     };
 
                     _context.Reservations.Add(reservation);
@@ -104,6 +106,24 @@ namespace LibraryApp.Controllers.API
 
 
 
-        
+        //PUT /api/reservations/1
+        [HttpPut]
+        [Authorize(Roles = RoleName.Admin + "," + RoleName.Employee)]
+        public IHttpActionResult UpdateReservation(UpdateReservationDto updateReservationDto)
+        {
+
+            var reservationInDb = _context.Reservations.SingleOrDefault( o => o.Id == updateReservationDto.ReservationId);
+            if (reservationInDb == null)
+                return NotFound();
+
+            reservationInDb.ReservationStatusId = updateReservationDto.StatusId;
+
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
+
+
     }
 }
