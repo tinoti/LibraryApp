@@ -17,5 +17,11 @@ namespace LibraryApp.Controllers
 
             return View("Index");
         }
+
+        
+        public ActionResult Status()
+        {
+            return View();
+        }
     }
 }

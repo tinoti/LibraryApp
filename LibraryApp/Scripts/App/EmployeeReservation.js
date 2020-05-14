@@ -52,6 +52,9 @@
         },
         columns: [
             {
+                data: "Id"
+            },
+            {
                 data: "Book.Name"
                 
             },
@@ -155,18 +158,18 @@
     });
 
     $('#accepted').on("click", function () {
-        table.columns([2]).search("Potvrđeno").draw();
+        table.columns([3]).search("Potvrđeno").draw();
     });
 
     
 
     $('#rejected').on("click", function () {
-        table.columns([2]).search("Odbijeno").draw();
+        table.columns([3]).search("Odbijeno").draw();
     });
 
 
     $('#pending').on("click", function () {
-        table.columns([2]).search("Čeka obradu").draw();
+        table.columns([3]).search("Čeka obradu").draw();
     });
 
     $('#allReservations').on("click", function () {

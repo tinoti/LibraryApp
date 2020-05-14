@@ -439,6 +439,7 @@
     <Content Include="Scripts\App\Book.js" />
     <Content Include="Scripts\App\EmployeeReservation.js" />
     <Content Include="Scripts\App\Reservation.js" />
+    <Content Include="Scripts\App\Status.js" />
     <Content Include="Scripts\bloodhound.js" />
     <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Content\DataTables\css\semanticui.scss" />
@@ -681,6 +682,7 @@
     <Content Include="Views\Book\AddOrEdit.cshtml" />
     <Content Include="Views\Reservation\EmployeeIndex.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Reservation\Status.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

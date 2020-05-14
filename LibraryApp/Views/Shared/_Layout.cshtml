@@ -28,6 +28,10 @@
                     {
                         <li>@Html.ActionLink("Zaposlenici", "Index","Employee") </li>                       
                     }
+                    else if ( ! (User.IsInRole(LibraryApp.Models.RoleName.Admin) || User.IsInRole(LibraryApp.Models.RoleName.Employee)))
+                    {
+                        <li>@Html.ActionLink("Provjeri status rezervacije", "Status", "Reservation")</li>
+                    }
 
                 </ul>
                 @Html.Partial("_LoginPartial")

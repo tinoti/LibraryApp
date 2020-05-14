@@ -1,39 +1,28 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-
+    <title>Status</title>
 </head>
 <body>
+    <h2>Unesi broj članske iskaznice i provjeri status svojih rezervacija</h2>
     <div>
-        <h2>Rezervacije</h2>
-
-    </div>
-
-    <div>
-
-        <form id="reservationForm">
-
-            <div id="dynamicInputDiv" class="form-group">
-
-            </div>
-
-
+        <form id="statusForm">
 
             <label for="MemberId">Broj članske iskaznice:</label><br>
             <input type="text" id="MemberId" name="MemberId" class="form-control"> <br />
-            <input type="submit" value="Pošalji" class="btn btn-primary">
+            <input type="submit" value="Provjeri" class="btn btn-primary">
         </form>
-
     </div>
-
-   
 
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/reservation")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/status")
+
 
 </body>
 </html>

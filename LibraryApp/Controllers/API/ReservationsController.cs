@@ -47,6 +47,22 @@ namespace LibraryApp.Controllers.API
             return Ok(reservations);
         }
 
+        //GET /api/reservations/id
+        public IHttpActionResult GetReservation(int id)
+        {
+            var reservations = _context.Reservations
+                .Include(o => o.Book)
+                .Include(o => o.Member)
+                .Include(o => o.ReservationStatus)
+                .ToList()
+                .FindAll(o => o.MemberId == id);
+
+            if (reservations == null)
+                return NotFound();
+
+            return Ok(reservations);
+        }
+
 
         //POST /api/reservations
         [HttpPost]
