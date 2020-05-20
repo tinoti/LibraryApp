@@ -48,17 +48,18 @@ namespace LibraryApp.Controllers.API
         }
 
         //GET /api/reservations/id
-        public IHttpActionResult GetReservation(int id)
+        public IHttpActionResult GetReservation(string id)
         {
+            Member member = _context.Members.SingleOrDefault(o => o.MembershipCardNumber == id);
+            if (member == null)
+                return NotFound();
+
             var reservations = _context.Reservations
                 .Include(o => o.Book)
                 .Include(o => o.Member)
                 .Include(o => o.ReservationStatus)
                 .ToList()
-                .FindAll(o => o.MemberId == id);
-
-            if (reservations == null)
-                return NotFound();
+                .FindAll(o => o.MemberId == member.Id);
 
             return Ok(reservations);
         }
@@ -69,8 +70,14 @@ namespace LibraryApp.Controllers.API
         public IHttpActionResult CreateReservation(ReservationDto reservationDto)
         {
 
-            //Number of reservations by same member id in database
-            var numberOfReservations = _context.Reservations.ToList().FindAll(o => o.MemberId == reservationDto.MemberId).Count;
+            Member member = _context.Members.SingleOrDefault(o => o.MembershipCardNumber == reservationDto.MembershipCardNumber);
+            if (member == null)
+                return NotFound();
+
+            //Find all reservations by the same member
+            var reservations = _context.Reservations.ToList().FindAll(o => o.MemberId == member.Id);
+
+            var numberOfReservations = reservations.Count;
 
             List<BookDto> successReservation = new List<BookDto>();
             List<BookDto> failReservation = new List<BookDto>();
@@ -78,10 +85,12 @@ namespace LibraryApp.Controllers.API
             List<List<BookDto>> reservationsList = new List<List<BookDto>>();
 
 
-            //Add reservations, if max reservations is reached add to failReservation list, else add to successResevation list and to database
+
+            //Add reservations, if max reservations is reached or book is already in reservations, add to failReservation list, 
+            //else add to successResevation list and to database
             foreach (BookDto book in reservationDto.Books)
             {
-                if (numberOfReservations >= MAX_RESERVATIONS)
+                if (numberOfReservations >= MAX_RESERVATIONS || reservations.Find(o => o.BookId == book.Id) != null)
                 {
                     failReservation.Add(book);
                 }
@@ -102,7 +111,7 @@ namespace LibraryApp.Controllers.API
                     var reservation = new Reservation
                     {
                         BookId = book.Id,
-                        MemberId = reservationDto.MemberId,
+                        MemberId = member.Id,
                         ReservationStatusId = 1,
                         ReservationTime = DateTime.Now
                     };

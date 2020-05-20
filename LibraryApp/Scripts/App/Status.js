@@ -3,26 +3,35 @@
 
         event.preventDefault();
 
-        var MemberId = $('#MemberId').val();
+        var MembershipCardNumber = $('#MembershipCardNumber').val();
 
 
         $.ajax({
-            url: "/api/reservations/" + MemberId,
+            url: "/api/reservations/" + MembershipCardNumber,
             method: "GET",
             dataType: "json",
             success: function (data) {
 
                 var text = "";
 
-                data.forEach(function (reservation) {
-                    var textConcat = "<strong>Broj rezervacije: </strong>" + reservation.Id + "<br><strong>Knjiga: </strong> " + reservation.Book.Name + "<br> <strong>Status: </strong>" + reservation.ReservationStatus.Name + "<br><br>";
-                    text+= textConcat;
+                if (data.length == 0)
+                    text = "Nema niti jedne rezervacije.";
+                else {
+                    data.forEach(function (reservation) {
+                        var textConcat = "<strong>Broj rezervacije: </strong>" + reservation.Id + "<br><strong>Knjiga: </strong> " + reservation.Book.Name + "<br> <strong>Status: </strong>" + reservation.ReservationStatus.Name + "<br><br>";
+                        text += textConcat;
 
-                });
+                    });
+
+                }             
                 bootbox.alert(text);
 
                 //Clear member id 
-                $('#MemberId').val('');
+                $('#MembershipCardNumber').val('');
+            },
+            error: function (error) {
+                if (error.status == 404)
+                    toastr.error("Članska iskaznica ne postoji!");
             }
         });
 

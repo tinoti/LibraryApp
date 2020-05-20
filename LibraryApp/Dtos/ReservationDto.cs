@@ -11,7 +11,7 @@ namespace LibraryApp.Dtos
 
         public List<BookDto> Books{ get; set; }
 
-        public int MemberId { get; set; }
+        public string MembershipCardNumber { get; set; }
 
 
     }

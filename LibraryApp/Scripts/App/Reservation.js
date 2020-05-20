@@ -88,9 +88,9 @@
 
         event.preventDefault();
 
-        var MemberId = $('#MemberId').val();
+        var MembershipCardNumber = $('#MembershipCardNumber').val();
 
-        var data = { 'Books': bookList, 'MemberId': MemberId };
+        var data = { 'Books': bookList, 'MembershipCardNumber': MembershipCardNumber };
 
 
         $.ajax({
@@ -108,7 +108,7 @@
 
                 //Display error message for each failed reservation
                 data[1].forEach(function (book) {
-                    toastr.error("Knjiga " + book.Name + " nije dodana. Dosegnut je maksimalan broj rezervacija.")
+                    toastr.error("Knjiga " + book.Name + " nije dodana. Dosegnut je maksimalan broj rezervacija ili je knjiga već u rezervaciji.")
                 });
 
                 //Clear the list on success
@@ -119,6 +119,12 @@
 
                 //Clear member id 
                 $('#MemberId').val('');
+            },
+            error: function (error) {
+                if (error.status == 404)
+                    toastr.error("Krivo unešeni podaci!");
+                else
+                    toastr.error("Dogodila se greška. Kontaktirajte administratora za pomoć.");
             }
         });
 
