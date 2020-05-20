@@ -25,7 +25,8 @@ namespace LibraryApp.Models
         [Required]
         public int ReservationStatusId { get; set; }
 
-
+        [Required]
+        public DateTime ReservationTime { get; set; }
 
 
     }

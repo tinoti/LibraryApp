@@ -2,7 +2,6 @@ dodati errore kada se krivo upiše, server i client side
 
 dodati anti forgery
 
-maknuti input iz slijedecih typeahead suggestiona kada ga se selecta
 
 implementirati cijelokupno provjeravanje availability knjige
 
@@ -10,6 +9,4 @@ implementirati cijelokupno provjeravanje availability knjige
 pogledati mogucnost stavljanja koda u zasebne funkcije radi lakšeg snalaženja
 
 
-SADA
-
-kod reservationo viewa anonimnog korisnika, kada se odabere jedna knjiga maknuti ju sa popisa kod odabira slijedece
+dodati provjeru je li korisnik vec napravio rezervaciju za odredenu knjigu u controller

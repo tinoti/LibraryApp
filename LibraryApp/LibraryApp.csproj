@@ -245,6 +245,22 @@
     <Compile Include="Migrations\202005111337474_SeedReservationStatus.Designer.cs">
       <DependentUpon>202005111337474_SeedReservationStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005142050003_AddReservationTimeToReservationModel.cs" />
+    <Compile Include="Migrations\202005142050003_AddReservationTimeToReservationModel.Designer.cs">
+      <DependentUpon>202005142050003_AddReservationTimeToReservationModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201655105_SeedBookGenres.cs" />
+    <Compile Include="Migrations\202005201655105_SeedBookGenres.Designer.cs">
+      <DependentUpon>202005201655105_SeedBookGenres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201706101_SeedTestBooks.cs" />
+    <Compile Include="Migrations\202005201706101_SeedTestBooks.Designer.cs">
+      <DependentUpon>202005201706101_SeedTestBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201709400_SeedTestEmployees.cs" />
+    <Compile Include="Migrations\202005201709400_SeedTestEmployees.Designer.cs">
+      <DependentUpon>202005201709400_SeedTestEmployees.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
     <Compile Include="Models\Book.cs" />
@@ -261,6 +277,7 @@
     <Compile Include="ViewModels\BookViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="404.html" />
     <Content Include="Content\bootstrap-lumen.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -725,6 +742,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005111337474_SeedReservationStatus.resx">
       <DependentUpon>202005111337474_SeedReservationStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005142050003_AddReservationTimeToReservationModel.resx">
+      <DependentUpon>202005142050003_AddReservationTimeToReservationModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201655105_SeedBookGenres.resx">
+      <DependentUpon>202005201655105_SeedBookGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201706101_SeedTestBooks.resx">
+      <DependentUpon>202005201706101_SeedTestBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201709400_SeedTestEmployees.resx">
+      <DependentUpon>202005201709400_SeedTestEmployees.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -62,6 +62,29 @@
                 data: "Member.Name"
             },
             {
+                data: "ReservationTime",
+                //Handles the date and time display of the reservation
+                render: function (data) {
+
+                    var displayDateTime = "";
+
+                    //Convert c# datetime to JS datetime
+                    var dateTime = new Date(data);
+                    
+                    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+                    var date = dateTime.toLocaleDateString("hr-HR", dateOptions);
+
+                    const timeOptions = { hour: '2-digit', minute: '2-digit' };
+
+                    var time = dateTime.toLocaleTimeString("hr-HR", timeOptions);
+
+                    var displayDateTime = date + ", <br>" + time;
+
+                    return displayDateTime;
+                }
+            },
+            {
                 data: "ReservationStatus.Name"              
             },
             {
@@ -158,18 +181,18 @@
     });
 
     $('#accepted').on("click", function () {
-        table.columns([3]).search("Potvrđeno").draw();
+        table.columns([4]).search("Potvrđeno").draw();
     });
 
     
 
     $('#rejected').on("click", function () {
-        table.columns([3]).search("Odbijeno").draw();
+        table.columns([4]).search("Odbijeno").draw();
     });
 
 
     $('#pending').on("click", function () {
-        table.columns([3]).search("Čeka obradu").draw();
+        table.columns([4]).search("Čeka obradu").draw();
     });
 
     $('#allReservations').on("click", function () {

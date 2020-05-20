@@ -27,6 +27,7 @@ namespace LibraryApp.Controllers
         // GET: Book
         public ActionResult Index()
         {
+
             if (User.IsInRole(RoleName.Admin) || User.IsInRole(RoleName.Employee))
                 return View("EmployeeIndex");
 

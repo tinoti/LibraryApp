@@ -87,8 +87,10 @@ namespace LibraryApp.Controllers.API
                 }
                 else
                 {
-                    //Get book in db by id and check if it's available, also checks if id is correct (Single throws exception if not found)
-                    var bookInDb = _context.Books.Single(b => b.Id == book.Id);
+                    //Get book in db by id and check if it's available
+                    var bookInDb = _context.Books.SingleOrDefault(b => b.Id == book.Id);
+                    if (bookInDb == null)
+                        return NotFound();
 
                     if (bookInDb.NumberAvailable <= 0)
                         return BadRequest();
@@ -101,7 +103,8 @@ namespace LibraryApp.Controllers.API
                     {
                         BookId = book.Id,
                         MemberId = reservationDto.MemberId,
-                        ReservationStatusId = 1
+                        ReservationStatusId = 1,
+                        ReservationTime = DateTime.Now
                     };
 
                     _context.Reservations.Add(reservation);
