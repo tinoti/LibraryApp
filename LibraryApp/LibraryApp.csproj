@@ -261,6 +261,18 @@
     <Compile Include="Migrations\202005201709400_SeedTestEmployees.Designer.cs">
       <DependentUpon>202005201709400_SeedTestEmployees.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005201818506_SeedTestMembers.cs" />
+    <Compile Include="Migrations\202005201818506_SeedTestMembers.Designer.cs">
+      <DependentUpon>202005201818506_SeedTestMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201821382_SeedTestReservations.cs" />
+    <Compile Include="Migrations\202005201821382_SeedTestReservations.Designer.cs">
+      <DependentUpon>202005201821382_SeedTestReservations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201855597_SeedTestEmployeesRole.cs" />
+    <Compile Include="Migrations\202005201855597_SeedTestEmployeesRole.Designer.cs">
+      <DependentUpon>202005201855597_SeedTestEmployeesRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
     <Compile Include="Models\Book.cs" />
@@ -754,6 +766,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005201709400_SeedTestEmployees.resx">
       <DependentUpon>202005201709400_SeedTestEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201818506_SeedTestMembers.resx">
+      <DependentUpon>202005201818506_SeedTestMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201821382_SeedTestReservations.resx">
+      <DependentUpon>202005201821382_SeedTestReservations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201855597_SeedTestEmployeesRole.resx">
+      <DependentUpon>202005201855597_SeedTestEmployeesRole.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
