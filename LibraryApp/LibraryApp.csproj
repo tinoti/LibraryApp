@@ -456,13 +456,11 @@
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Content\typeahead.css" />
-    <Content Include="Documentation.txt" />
     <Content Include="Dynamic HTML\EmptyInput.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="image.jpg" />
     <Content Include="Scripts\App\AdminEmployee.js" />
     <Content Include="Scripts\App\EmployeeBook.js" />
     <Content Include="Scripts\App\Book.js" />
@@ -497,6 +495,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <None Include="Properties\PublishProfiles\AlgebraKnjiznica - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -661,7 +660,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="TO DO.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
